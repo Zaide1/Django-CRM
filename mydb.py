@@ -1,3 +1,4 @@
+#VRYXC9eR
 import mysql.connector
 
 dataBase = mysql.connector.connect(
