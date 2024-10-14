@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-
+from .models import Record
 
 class SignUpForm(UserCreationForm):
 
@@ -35,3 +35,21 @@ class SignUpForm(UserCreationForm):
 
 
 
+
+
+#Create Add Reord Form
+
+class AddRecordForm(forms.ModelForm):
+
+        first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "First Name", "Class":"form-control"}), label="")
+        last_name=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Last Name", "Class":"form-control"}), label="")
+        email=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Email", "Class":"form-control"}), label="")
+        phone=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Phone", "Class":"form-control"}), label="")
+        address=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Address", "Class":"form-control"}), label="")
+        city=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "City", "Class":"form-control"}), label="")
+        postcode=forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "postcode", "Class":"form-control"}), label="")
+
+
+        class Meta:
+             model = Record
+             exclude = ("user", )

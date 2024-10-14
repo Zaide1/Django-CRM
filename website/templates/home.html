@@ -1,11 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
+
 
     {% if user.is_authenticated %}
-    <h1>Hello World</h1>
-    {% else %}
+    <h1>Records...</h1>
+    <br/>
+
+
+    <table class="table table-striped table-hover table-bordered" >
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Postcode</th>
+            <th scope="Col">ID</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+            {% if records %}
+                {% for record in records%}
+                    <tr>
+                    <td>{{record.first_name}}
+                     {{record.last_name}}</td>
+                     <td>{{record.email}}</td>
+                     <td>{{record.phone}}</td>
+                     <td>{{record.address}}</td>
+                     <td>{{record.city}}</td>
+                     <td>{{record.postcode}}</td>
+                     <td><a href = "{% url 'record' record.id %}">{{record.id}}</a></td>
+                </tr> 
+                {%endfor%}
+        {%endif%}
+
+          
+        </tbody>
+      </table>
+      {% else %}
+      <div class="col-md-6 offset-md-3">
     <h1>Login</h1>
     <br/>
 
